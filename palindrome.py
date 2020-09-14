@@ -1,20 +1,10 @@
 def is_palindrome(var):
+    # When var type is not str or int
+    if type(var) != str and type(var) != int:
+        raise TypeError
 
-    if isinstance(var, str):
+    elif isinstance(var, int):
+        var = str(var)
+    elif isinstance(var, str):
         var = var.lower().replace(' ', '')
-        return var == var[::-1]
-
-    elif isinstance(var, int) and not isinstance(var, bool):
-        num_list = []
-        while var:
-            num_list.append(var % 10)
-            var = var // 10
-        return num_list == num_list[::-1]
-        # 1234 -> [4, 3, 2, 1]
-        # 1234 % 10 = 4
-        # 123 % 10 = 3
-        # 12 % 10 = 2
-        # 1 % 10 = 1
-
-    # When var type isn't str or int
-    raise TypeError
+    return var == var[::-1]
